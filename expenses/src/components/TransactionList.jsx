@@ -1,16 +1,21 @@
 import TransactionItem from "./TransactionItem";
 
-function TransactionList({ transactions, onDelete }) {
-  if (transactions.length === 0) {
-    return <p className="empty">No transactions found.</p>;
-  }
-
+function TransactionList({ transactions }) {
   return (
-    <ul className="list">
-      {transactions.map((t) => (
-        <TransactionItem key={t.id} transaction={t} onDelete={onDelete} />
-      ))}
-    </ul>
+    <div className="transaction-list">
+      <h2>Transaction History</h2>
+
+      {transactions.length === 0 ? (
+        <p>No transactions yet.</p>
+      ) : (
+        transactions.map((transaction) => (
+          <TransactionItem
+            key={transaction.id}
+            transaction={transaction}
+          />
+        ))
+      )}
+    </div>
   );
 }
 
